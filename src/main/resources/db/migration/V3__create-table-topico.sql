@@ -3,8 +3,8 @@ CREATE TABLE topico (
         id bigint unique not null auto_increment,
         titulo varchar (250) not null unique,
         mensagem varchar (5000) not null unique,
-        dataCriacao date not null,
-        status varchar (50) not null,
+        data_criacao date not null,
+        status_topico varchar (50) not null,
 
         usuario_id bigint not null,
         curso_id bigint not null,

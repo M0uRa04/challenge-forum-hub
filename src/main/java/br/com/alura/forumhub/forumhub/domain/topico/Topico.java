@@ -11,6 +11,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Table
@@ -28,10 +29,10 @@ public class Topico {
     private String mensagem;
 
     @DateTimeFormat(pattern = "dd-MM-yyyy")
-    private LocalDate dataCriacao;
+    private LocalDate data_criacao;
 
     @Enumerated(EnumType.STRING)
-    private StatusTopico statusTopico;
+    private StatusTopico status_topico;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Usuario usuario;
@@ -42,7 +43,22 @@ public class Topico {
     @OneToMany(mappedBy = "topico", fetch = FetchType.LAZY)
     private List<Resposta> respostas;
 
-    public Topico () {
-        this.statusTopico = StatusTopico.NAO_RESPONDIDO;
+    public Topico () { 
+        this.status_topico = StatusTopico.NAO_RESPONDIDO;
+        this.data_criacao = LocalDate.now();
+    }
+
+    public Topico(DadosCadastroTopico dadosCadastroTopico, Optional<Usuario> autor, Optional<Curso> curso) {
+        this.status_topico = StatusTopico.NAO_RESPONDIDO;
+        this.data_criacao = LocalDate.now();
+        this.titulo = dadosCadastroTopico.titulo();
+        this.mensagem = dadosCadastroTopico.mensagem();
+
+        if (autor.isEmpty() || curso.isEmpty()) {
+            throw new IllegalArgumentException("Id informado do curso ou autor inexistente");
+        }
+
+        this.usuario = autor.get();
+        this.curso = curso.get();
     }
 }

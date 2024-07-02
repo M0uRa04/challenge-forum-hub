@@ -7,7 +7,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -29,7 +28,7 @@ public class Resposta {
     private Topico topico;
 
     @DateTimeFormat(pattern = "dd-MM-yyyy")
-    private LocalDate dataCriacao;
+    private LocalDate data_criacao;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Usuario usuario;

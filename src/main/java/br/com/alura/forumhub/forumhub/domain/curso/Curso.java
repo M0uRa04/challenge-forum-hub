@@ -28,7 +28,7 @@ public class Curso {
     private List<Topico> topico;
 
     @Enumerated(EnumType.STRING)
-    private CategoriaCurso categoriaCurso;
+    private CategoriaCurso categoria;
 
     public Curso () {
         this.ativo = true;

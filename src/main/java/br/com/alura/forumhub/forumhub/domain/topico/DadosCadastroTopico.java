@@ -1,19 +1,19 @@
-package br.com.alura.forumhub.forumhub.domain.topico;
+        package br.com.alura.forumhub.forumhub.domain.topico;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+        import jakarta.validation.constraints.NotBlank;
+        import jakarta.validation.constraints.NotNull;
 
-public record DadosCadastroTopico(
+        public record DadosCadastroTopico(
 
-        @NotBlank
-        String titulo,
+                @NotBlank
+                String titulo,
 
-        @NotBlank
-        String mensagem,
+                @NotBlank
+                String mensagem,
 
-        @NotNull
-        Long idCurso,
+                @NotNull
+                Long idCurso,
 
-        @NotNull
-        Long idUsuario
-) {}
+                @NotNull
+                Long idUsuario
+        ) {}

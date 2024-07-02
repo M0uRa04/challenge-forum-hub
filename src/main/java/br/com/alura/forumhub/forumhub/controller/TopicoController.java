@@ -1,6 +1,7 @@
 package br.com.alura.forumhub.forumhub.controller;
 
 import br.com.alura.forumhub.forumhub.domain.topico.DadosCadastroTopico;
+import br.com.alura.forumhub.forumhub.domain.topico.DadosRespostaTopico;
 import br.com.alura.forumhub.forumhub.domain.topico.TopicoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +18,19 @@ public class TopicoController {
 
     @GetMapping
     public ResponseEntity listaTopicos () {
-        return ResponseEntity.ok("Listando tópicos");
+        try {
+            var listaDeTopicos = service.listarTopicosAtivos();
+            return ResponseEntity.ok(listaDeTopicos);
+        } catch (RuntimeException ex) {
+            return ResponseEntity.noContent().build();
+        }
     }
 
     @PostMapping
     public ResponseEntity cadastraTopicos (@Valid @RequestBody DadosCadastroTopico dados) {
         var topicoCadastrado = service.cadastrar(dados);
         var uri = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUri();
-        return ResponseEntity.created(uri).body(topicoCadastrado);
+        var topicoDeResposta = new DadosRespostaTopico(topicoCadastrado);
+        return ResponseEntity.created(uri).body(topicoDeResposta);
     }
 }

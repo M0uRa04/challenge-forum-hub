@@ -27,9 +27,8 @@ public class Usuario {
 
     private String senha;
 
-    @ElementCollection(targetClass = Perfis.class)
     @Enumerated(EnumType.STRING)
-    private List<Perfis> perfis;
+    private Perfis perfil;
 
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
     private List <Resposta> respostas;
@@ -41,7 +40,6 @@ public class Usuario {
 
     public Usuario () {
         this.ativo = true;
-        this.perfis = new ArrayList<>();
-        this.perfis.add(Perfis.ROLE_USER);
+        this.perfil = Perfis.ROLE_USER;
     }
 }

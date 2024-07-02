@@ -1,7 +1,0 @@
-CREATE TABLE perfil (
-
-    id BIGINT NOT NULL UNIQUE AUTO_INCREMENT,
-    nome VARCHAR(50) NOT NULL,
-
-    PRIMARY KEY (id)
-);
