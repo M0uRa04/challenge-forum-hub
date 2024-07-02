@@ -15,7 +15,6 @@ import java.time.LocalDate;
 @Entity
 @Table
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Resposta {
@@ -26,13 +25,14 @@ public class Resposta {
 
     private String mensagem;
 
+    @ManyToOne(fetch = FetchType.LAZY)
     private Topico topico;
 
-    @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private LocalDate dataCriacao;
 
-    private Usuario autor;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Usuario usuario;
 
     private String solucao;
 

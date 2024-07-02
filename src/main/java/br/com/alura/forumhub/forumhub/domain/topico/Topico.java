@@ -27,15 +27,19 @@ public class Topico {
 
     private String mensagem;
 
-    @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private LocalDate dataCriacao;
 
     @Enumerated(EnumType.STRING)
     private StatusTopico statusTopico;
 
-    private Usuario autor;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Usuario usuario;
+
+    @ManyToOne(fetch = FetchType.EAGER)
     private Curso curso;
+
+    @OneToMany(mappedBy = "topico", fetch = FetchType.LAZY)
     private List<Resposta> respostas;
 
     public Topico () {

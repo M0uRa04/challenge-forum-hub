@@ -1,10 +1,13 @@
 package br.com.alura.forumhub.forumhub.domain.curso;
 
 
+import br.com.alura.forumhub.forumhub.domain.topico.Topico;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.util.List;
 
 @Entity
 @Table
@@ -20,6 +23,9 @@ public class Curso {
     private String nome;
 
     private Boolean ativo;
+
+    @OneToMany(mappedBy = "curso", fetch = FetchType.EAGER)
+    private List<Topico> topico;
 
     @Enumerated(EnumType.STRING)
     private CategoriaCurso categoriaCurso;
