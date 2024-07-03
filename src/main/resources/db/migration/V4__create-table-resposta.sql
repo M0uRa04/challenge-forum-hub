@@ -3,7 +3,8 @@ CREATE TABLE resposta (
     id BIGINT NOT NULL UNIQUE AUTO_INCREMENT,
     mensagem VARCHAR(300) NOT NULL UNIQUE,
     data_criacao DATE NOT NULL,
-    solucao VARCHAR (3000) NOT NULL UNIQUE,
+    solucao varchar(2000) NOT NULL,
+     UNIQUE (mensagem(100)),
 
     topico_id BIGINT NOT NULL,
     usuario_id BIGINT NOT NULL,
