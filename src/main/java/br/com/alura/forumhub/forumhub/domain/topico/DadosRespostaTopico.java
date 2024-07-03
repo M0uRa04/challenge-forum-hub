@@ -11,9 +11,9 @@
 
                 String mensagem,
 
-                String nomeCurso,
+                String curso,
 
-                String nomeUsuario,
+                String autor,
 
                 LocalDate data_criacao,
 

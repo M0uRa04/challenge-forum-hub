@@ -36,4 +36,24 @@ public class TopicoService {
                 .collect(Collectors.toList());
         return listaDeTopicos;
     }
+
+    public Topico buscaTopicoPorId(Long id) {
+        return topicoRepository.findById(id).orElseThrow();
+    }
+
+    public Topico atualiza(DadosAtualizacaoTopico dados) {
+        var topicoRecuperado = topicoRepository.findById(dados.id()).orElseThrow(() -> new RuntimeException("Topico não encontrado para o Id Fornecido"));
+
+        if (!dados.titulo().isBlank()) {
+            topicoRecuperado.setTitulo(dados.titulo());
+        }
+        if (!dados.mensagem().isBlank()) {
+            topicoRecuperado.setMensagem(dados.mensagem());
+        }
+        return topicoRepository.save(topicoRecuperado);
+    }
+
+    public void deleta (Long id) {
+        topicoRepository.deleteById(id);
+    }
 }
