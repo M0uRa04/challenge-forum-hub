@@ -12,8 +12,5 @@
                 String mensagem,
 
                 @NotNull
-                Long idCurso,
-
-                @NotNull
-                Long idUsuario
+                Long idCurso
         ) {}

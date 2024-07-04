@@ -6,6 +6,7 @@
         import java.util.List;
 
         public record DadosRespostaTopico(
+                Long id,
 
                 String titulo,
 
@@ -23,7 +24,8 @@
 
         ) {
                 public DadosRespostaTopico (Topico topico) {
-                        this(topico.getTitulo(),
+                        this(topico.getId(),
+                                topico.getTitulo(),
                                 topico.getMensagem(),
                                 topico.getCurso().getNome(),
                                 topico.getUsuario().getNome(),

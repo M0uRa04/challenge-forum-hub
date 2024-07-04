@@ -21,10 +21,9 @@ public class TopicoService {
     private CursoRepository cursoRepository;
 
 
-    public Topico cadastrar (DadosCadastroTopico dadosCadastroTopico) {
-        var autor = usuarioRepository.findById(dadosCadastroTopico.idUsuario());
+    public Topico cadastrar (DadosCadastroTopico dadosCadastroTopico, Long idDoUsuario) {
+        var autor = usuarioRepository.findById(idDoUsuario);
         var curso = cursoRepository.findById(dadosCadastroTopico.idCurso());
-
         var novoTopico = new Topico(dadosCadastroTopico, autor, curso);
         topicoRepository.save(novoTopico);
         return novoTopico;
