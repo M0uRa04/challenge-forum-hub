@@ -59,6 +59,4 @@ public class ExceptionHandler {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro: " +ex.getLocalizedMessage());
     }
 
-
-
 }
